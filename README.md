@@ -1,2 +1,2 @@
-# EgyptianFractions.jl
+# EgyptianFractions
 Just for fun, Egyptian Fractions in Julia
