@@ -1,0 +1,4 @@
+name = "EgyptianFractions"
+uuid = "7da45da5-a756-48a3-8192-a8f1310fc045"
+authors = ["Ed Scheinerman <ers@jhu.edu>"]
+version = "0.1.0"
