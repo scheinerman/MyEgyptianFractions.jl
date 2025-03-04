@@ -12,8 +12,9 @@ For example, $\frac37 = \frac13 + \frac1{11} + \frac{1}{231}$.
 
 This is a method proposed by Fibonacci. To write $x$ as an Egyptian fraction, choose the smallest 
 positive $n$ such that $x \le \frac1n$. The fraction $\frac1n$ is the first summand in the represenation
-and the remaining terms are given by the greedy method applied to $x - \frac1n$. This algorithm is
-guaranteed to terminate. 
+and the remaining terms are given by the greedy method applied to $x - \frac1n$. This algorithm is guaranteed to terminate. 
+See [this page](https://en.wikipedia.org/wiki/Greedy_algorithm_for_Egyptian_fractions) 
+for more information.
 
 Use `greedy(x)` to return a list of the denominators in a greedy Egyptian fraction representation of `x`.
 ```
