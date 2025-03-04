@@ -10,7 +10,7 @@ Exact = Union{Integer,Rational}
 Find the first positive integer `n` that is *not* in the set `used`
 such that `1/n ≤ x`.
 """
-function _first_available(x::Exact, used::Set{BigInt})
+function _first_available(x::Exact, used::Set{T}) where {T<:Integer}
     result = BigInt(ceil(1//x))
 
     while result ∈ used
@@ -35,7 +35,7 @@ end
 Return a list of denominators for an Egyptian fraction representation of 
 `x`. Note that `x` must be a positive integer or rational number. 
 """
-function greedy(x::Exact, used::Set{BigInt}=Set{BigInt}())::Vector{BigInt}
+function greedy(x::Exact, used::Set{T}=Set{BigInt}())::Vector{BigInt} where {T<:Integer}
     if x ≤ 0
         throw(DomainError(x, "Argument must be positive"))
     end
