@@ -57,6 +57,49 @@ julia> greedy(7//2)
  333156570077494122960
 ```
 
-## More to Come?
+## Integer Programming Method
 
-We hope to add other methods. 
+The function `optimal` finds Egyptian fraction representations using integer programming. 
+The basic invocation is `optimal(x, d_max)` where `x` is the (positive)
+rational number to be represented and `d_max` is the largest allowable denominator. 
+
+The output will be a list of integers the sum of whose reciprocals is `x`, or an error
+is thrown if no representation is possible.
+
+By default, `optimal` seeks a representation with as few terms as possible. However, 
+if called as `optimal(x, d_max, false)` no minimization is sought.
+
+```
+julia> optimal(3//7, 25)
+4-element Vector{Int64}:
+  6
+  7
+ 14
+ 21
+
+julia> optimal(3//7, 25, false)
+5-element Vector{Int64}:
+  7
+  9
+ 14
+ 18
+ 21
+```
+
+Note that `greedy` returns an uglier result for $\frac37$:
+```
+julia> greedy(3//7)
+3-element Vector{BigInt}:
+   3
+  11
+ 231
+```
+
+If `d_max` is too small, no representation may be possible. But if `d_max` is set to 
+a large value, then `optimal` may require an enormous amount of time to find a representation.
+
+## Handy Functions
+
+* If `denoms` is a list of posive integers, `reciprocal_sum(denoms)` returns the sum of the reciprocals of the elements of `denoms`.
+
+* Use `representation_check(denoms, x)` to check if `x` equals the sum of the reciprocals of the integers in `denoms`.
