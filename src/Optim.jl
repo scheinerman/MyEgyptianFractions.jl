@@ -20,7 +20,7 @@ function optimal(x::Exact, d_max::Int, min_terms::Bool=true)
     a = numerator(x)
     b = denominator(x)
 
-    M = lcm(1:d_max)
+    M = big(lcm(1:d_max))
 
     coef = [M * b ÷ d for d in 1:d_max]
 

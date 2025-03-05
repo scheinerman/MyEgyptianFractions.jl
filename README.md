@@ -86,7 +86,7 @@ julia> optimal(3//7, 25, false)
  21
 ```
 
-Note that `greedy` returns an uglier result for $\frac37$:
+Note that `greedy` returns a result for $\frac37$ that uses a large denominator.
 ```
 julia> greedy(3//7)
 3-element Vector{BigInt}:
@@ -97,6 +97,10 @@ julia> greedy(3//7)
 
 If `d_max` is too small, no representation may be possible. But if `d_max` is set to 
 a large value, then `optimal` may require an enormous amount of time to find a representation.
+
+> **WARNING**: Output from this function might be wrong because the IP solver does not use exact arithmetic. 
+
+>**NOTE**: By default, we use the `HiGHS` optimizer. Use of the `Gurobi` optimizer (if available) is better (faster, fewer errors).
 
 ## Handy Functions
 
