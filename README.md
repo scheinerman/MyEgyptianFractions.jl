@@ -98,9 +98,86 @@ julia> greedy(3//7)
 If `d_max` is too small, no representation may be possible. But if `d_max` is set to 
 a large value, then `optimal` may require an enormous amount of time to find a representation.
 
+
 > **WARNING**: Output from this function might be wrong because the IP solver does not use exact arithmetic. 
 
 >**NOTE**: By default, we use the `HiGHS` optimizer. Use of the `Gurobi` optimizer (if available) is better (faster, fewer errors).
+
+### A cautionary tale
+
+Typically, Egyptian fractions would be used for values stricly between 0 and 1, but we can try other values. For example, here we find a representation for 3:
+```
+julia> greedy(3)
+13-element Vector{BigInt}:
+     1
+     2
+     3
+     4
+     5
+     6
+     7
+     8
+     9
+    10
+    15
+   230
+ 57960
+```
+The `optimal` method with the `HiGHS` solve gives an incorrect answer:
+```
+julia> optimal(3,25)
+15-element Vector{Int64}:
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 15
+ 18
+ 20
+ 22
+ 24
+
+julia> reciprocal_sum(ans)
+491//154
+```
+
+However, if we use the Gurobi solver, we get a correct result:
+```
+julia> using Gurobi, ChooseOptimizer
+
+julia> set_solver(Gurobi)
+
+julia> optimal(3,25)
+Set parameter Username
+Set parameter LicenseID to value XXXXXXXX
+Academic license - for non-commercial use only - expires XXXX-XX-XX
+13-element Vector{Int64}:
+  1
+  2
+  3
+  4
+  5
+  6
+  8
+  9
+ 10
+ 15
+ 18
+ 20
+ 24
+
+julia> reciprocal_sum(ans)
+3//1
+```
+Moral to the story: Check results with `reciprocal_sum` (or `representation_check`).
+
+
 
 ## Handy Functions
 
