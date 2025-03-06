@@ -18,7 +18,7 @@ for more information.
 
 Use `greedy(x)` to return a list of the denominators in a greedy Egyptian fraction representation of `x`.
 ```
-julia> using EgyptianFractions
+julia> using MyEgyptianFractions
 
 julia> greedy(3//7)
 3-element Vector{BigInt}:
