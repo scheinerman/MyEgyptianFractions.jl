@@ -1,6 +1,9 @@
 # MyEgyptianFractions
 Just for fun, [Egyptian fractions](https://en.wikipedia.org/wiki/Egyptian_fraction) in Julia.
 
+There is also a [registered Julia package](https://github.com/reallyasi9/EgyptianFractions.jl) to 
+compute Egyptian fractions.
+
 
 ## What are Egyptian Fractions?
 
