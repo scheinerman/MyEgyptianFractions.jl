@@ -1,4 +1,4 @@
-# EgyptianFractions
+# MyEgyptianFractions
 Just for fun, [Egyptian fractions](https://en.wikipedia.org/wiki/Egyptian_fraction) in Julia.
 
 
