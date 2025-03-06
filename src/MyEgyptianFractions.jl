@@ -1,4 +1,4 @@
-module EgyptianFractions
+module MyEgyptianFractions
 
 using ChooseOptimizer
 using JuMP
