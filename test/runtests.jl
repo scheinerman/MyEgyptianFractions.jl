@@ -1,5 +1,5 @@
 using Test
-using EgyptianFractions
+using MyEgyptianFractions
 
 @testset "Greedy" begin
     A = Set([2//3, 3, 50//11, 5//16, 1//5])
