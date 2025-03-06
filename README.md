@@ -72,14 +72,13 @@ By default, `optimal` seeks a representation with as few terms as possible. Howe
 if called as `optimal(x, d_max, false)` no minimization is sought.
 
 ```
-julia> optimal(3//7, 25)
-4-element Vector{Int64}:
-  6
+julia> optimal(3//7,30)
+3-element Vector{Int64}:
+  4
   7
- 14
- 21
+ 28
 
-julia> optimal(3//7, 25, false)
+julia> optimal(3//7,30,false)
 5-element Vector{Int64}:
   7
   9
@@ -103,7 +102,31 @@ a large value, then `optimal` may require an enormous amount of time to find a r
 
 > **WARNING**: Output from this function might be wrong because the IP solver does not use exact arithmetic. 
 
->**NOTE**: By default, we use the `HiGHS` optimizer. Use of the `Gurobi` optimizer (if available) is better (faster, fewer errors).
+
+### Using other solvers
+
+By default, we use the `HiGHS` optimizer. Use of the `Gurobi` optimizer (if available) is better (faster, fewer errors).
+Here is how to switch to `Gurobi` (or another solver).
+
+```
+julia> using MyEgyptianFractions
+
+julia> using ChooseOptimizer, Gurobi
+
+julia> set_solver(Gurobi)
+
+julia> optimal(3//7,30)
+Set parameter Username
+Set parameter LicenseID to value XXXXXXX
+Academic license - for non-commercial use only - expires XXXX-XX-XX
+3-element Vector{Int64}:
+  4
+  7
+ 28
+```
+
+
+
 
 ### A cautionary tale
 
